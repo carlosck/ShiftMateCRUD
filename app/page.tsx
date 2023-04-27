@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
   res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
 });
+
+export default async function Page() {
+  return <div>Hello,prueba!</div>;
+}
 /*
 import 'server-only';
 import { notFound } from 'next/navigation';
