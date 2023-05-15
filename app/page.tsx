@@ -1,7 +1,5 @@
-export default async function Page() {
-  return <div>Hello,prueba!</div>;
-}
-/*
+
+
 import 'server-only';
 import { notFound } from 'next/navigation';
 import * as admin from 'firebase-admin';
@@ -18,6 +16,11 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
+export default async function Page() {
+  const user = await db.collection('shifts').doc('projects').get();
+  return <div>Hello,prueba!</div>;
+}
+/*
 export default async function Page() {
   const user = await db.collection('users').doc('leerob').get();
 
