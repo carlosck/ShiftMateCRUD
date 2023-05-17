@@ -21,14 +21,8 @@ export default async function handler(
 ) {
   const { name } = request.query;
   
-  console.log("req",request);
-  console.log("res",response);
-  const projects = await db.collection('shifts').get();
-  console.log("projects",projects.docs);
-  projects.docs.map((project)=>{
-    console.log('->',project)
-  }
-    
-  )
-  return response.end(`Hello ${projects}!`);
+  const users = await  db.collection('shifts')
+    const userList = await users.get()    
+        
+    return response.end(JSON.stringify(userList.docs));
 }

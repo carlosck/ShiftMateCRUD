@@ -1,10 +1,10 @@
 {
     "functions": {
-      "pages/api/usuarios.tsx": {
+      "pages/api/insertuser.tsx": {
         "memory": 3008,
         "maxDuration": 60
       },
-      "pages/api/insert.tsx": {
+      "pages/api/users.tsx": {
         "memory": 1024,
         "maxDuration": 30
       }

@@ -17,23 +17,24 @@ const db = admin.firestore();
 
 export default async function Page(req, res) {
   const projects = await db.collection('shifts').doc('projects').get();
-  console.log("req",req);
+  /* console.log("req",req);
   console.log("res",res);
-  console.log("projects",projects);
+  console.log("projects",projects); */
 
-  try {
+  /* try {
     const docRef = await db.collection('shifts').add({
       user: 500,
       first: "Ada",
       last: "Lovelace",
-      born: 1815
+      born: 1815,
+      projects: []
     })
     
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
-  
+   */
   return <div>Hello,prueba!</div>;
 }
 /*
