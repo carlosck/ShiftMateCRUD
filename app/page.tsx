@@ -1,8 +1,7 @@
-
-
 import 'server-only';
 import { notFound } from 'next/navigation';
 import * as admin from 'firebase-admin';
+import { collection, addDoc } from "firebase/firestore";
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -16,8 +15,25 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 
-export default async function Page() {
-  const user = await db.collection('shifts').doc('projects').get();
+export default async function Page(req, res) {
+  const projects = await db.collection('shifts').doc('projects').get();
+  console.log("req",req);
+  console.log("res",res);
+  console.log("projects",projects);
+
+  try {
+    const docRef = await db.collection('shifts').add({
+      user: 500,
+      first: "Ada",
+      last: "Lovelace",
+      born: 1815
+    })
+    
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+  
   return <div>Hello,prueba!</div>;
 }
 /*
