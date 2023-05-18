@@ -13,7 +13,7 @@ if (!admin.apps.length) {
   
 const db = admin.firestore()
  */
-export default async function Page(_req, _res) {
+export default async function Page() {
 
     /* const users = await  db.collection('shifts')
     const userList = await users.get()    

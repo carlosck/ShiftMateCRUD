@@ -15,7 +15,7 @@ if (!admin.apps.length) {
 
 const db = admin.firestore();
 */
-export default async function Page(req, res) {
+export default async function Page() {
   //const projects = await db.collection('shifts').doc('projects').get();
   /* console.log("req",req);
   console.log("res",res);
