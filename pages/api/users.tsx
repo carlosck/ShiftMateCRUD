@@ -19,10 +19,11 @@ export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ) {
-  const { name } = request.query;
   
-  const users = await  db.collection('shifts')
-    const userList = await users.get()    
+  
+  /* const users = await  db.collection('shifts')
+  const userList = await users.get()    
         
-    return response.end(JSON.stringify(userList.docs));
+  return response.end(JSON.stringify(userList.docs)); */
+  return response.end('end');
 }
