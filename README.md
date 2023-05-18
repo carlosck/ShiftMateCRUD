@@ -25,4 +25,3 @@ $ yarn dev
 ```
 
 Your app is available at http://localhost:3000.
-
