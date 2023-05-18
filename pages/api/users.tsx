@@ -20,10 +20,14 @@ export default async function handler(
   response: NextApiResponse,
 ) {
   
-  
-  const users = await  db.collection('shifts').listDocuments();
-  console.log(JSON.stringify(users))
-  return response.end(JSON.stringify(users));
+  return response.end(JSON.stringify({
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+  }))
+  //const users = await  db.collection('shifts').listDocuments();
+  //console.log(JSON.stringify(users))
+  //return response.end(JSON.stringify(users));
   //const userList = await users.get()    
         
   //return response.end(JSON.stringify(userList.docs)); 
