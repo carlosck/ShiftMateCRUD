@@ -1,4 +1,4 @@
-import 'server-only';
+/*import 'server-only';
 import { notFound } from 'next/navigation';
 import * as admin from 'firebase-admin';
 import { collection, addDoc } from "firebase/firestore";
@@ -14,9 +14,9 @@ if (!admin.apps.length) {
 }
 
 const db = admin.firestore();
-
+*/
 export default async function Page(req, res) {
-  const projects = await db.collection('shifts').doc('projects').get();
+  //const projects = await db.collection('shifts').doc('projects').get();
   /* console.log("req",req);
   console.log("res",res);
   console.log("projects",projects); */

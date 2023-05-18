@@ -1,4 +1,4 @@
-import 'server-only';
+/* import 'server-only';
 import  * as admin from 'firebase-admin';
 
 if (!admin.apps.length) {
@@ -12,10 +12,10 @@ if (!admin.apps.length) {
   }
   
 const db = admin.firestore()
-
+ */
 export default async function Page(_req, _res) {
 
-    const users = await  db.collection('shifts')
+    /* const users = await  db.collection('shifts')
     const userList = await users.get()    
     
     return <div>
@@ -40,6 +40,7 @@ export default async function Page(_req, _res) {
                 </div>
             ))
             }
-    </div>;
+    </div>; */
+    return <div>test</div>
         
 }
