@@ -1,3 +1,4 @@
+/*
 const app = require('express')();
 const { v4 } = require('uuid');
 import { initializeApp } from 'firebase/app';
@@ -45,3 +46,4 @@ app.get('/api/item/:slug', (req, res) => {
 });
 
 module.exports = app;
+*/
