@@ -21,9 +21,9 @@ export default async function handler(
 ) {
   
   
-  /* const users = await  db.collection('shifts')
-  const userList = await users.get()    
+  const users = await  db.collection('shifts').get()
+  //const userList = await users.get()    
         
-  return response.end(JSON.stringify(userList.docs)); */
+  //return response.end(JSON.stringify(userList.docs)); 
   return response.end('end');
 }
