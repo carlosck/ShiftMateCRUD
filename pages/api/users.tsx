@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { notFound } from 'next/navigation';
 import * as admin from 'firebase-admin';
-import { collection, addDoc } from "firebase/firestore";
+// import { collection, addDoc } from "firebase/firestore";
 
 if (!admin.apps.length) {
   admin.initializeApp({
