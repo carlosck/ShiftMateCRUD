@@ -11,7 +11,9 @@ if(!admin.apps.length){
     });
 }
 const db= admin.firestore()
-
+/* {
+    "mail":"correo2@postmano.com"
+} */
 export default async function handler(request: NextApiRequest, response: NextApiResponse) {
 
     if(request.method==="POST")

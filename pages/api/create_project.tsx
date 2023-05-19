@@ -14,6 +14,14 @@ if(!admin.apps.length){
 
 const db = admin.firestore();
 //receive project: name: string, actors:[string] 
+/* {
+    "mail":"correo2@postmano.com",
+   "name":"nombre0 post",
+   "actors":[
+       "benjamin","carlitos","carlos"
+   ]
+   
+} */
 export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse
@@ -27,7 +35,7 @@ export default async function handler(
                     
                 name: request.body.name,
                 actors: request.body.actors,
-                current:0
+                current: 0
                 
             })
             

@@ -12,7 +12,11 @@ if (!admin.apps.length) {
     });
   }
 const db= admin.firestore();
-
+/* {
+  "name":"nombre2 post",
+  "mail":"correo2@postmano.com",
+  "user":"2desde postman"
+} */
 export default async function handler(
     request: NextApiRequest,
     response: NextApiResponse

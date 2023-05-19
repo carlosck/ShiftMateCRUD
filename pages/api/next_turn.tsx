@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 import getFirebaseAdmin from '../../hooks/firebaseconnect'
 
 const db = getFirebaseAdmin()
-
+/* {
+    "mail":"correo2@postmano.com",
+   "project":"nombre0 post"
+} */
 export default async function handler(request: NextApiRequest, response: NextApiResponse){
 
     const project = await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).get()
