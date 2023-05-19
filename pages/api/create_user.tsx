@@ -22,10 +22,10 @@ export default async function handler(
     {
       
       try {
-        const docRef= db.collection('shifts').add({
-            user:request.body.user,
-            mail:request.body.mail,
-            name:request.body.name,
+        const docRef= db.collection('shifts').doc(request.body.mail).set({
+            user: request.body.user,
+            mail: request.body.mail,
+            name: request.body.name,
             projects: []
         })
     } catch (error) {

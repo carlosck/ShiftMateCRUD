@@ -25,5 +25,5 @@ export default async function handler(
   const userList = await users.get()    
         
   return response.end(JSON.stringify(userList.docs));
-  // return response.end('end');
+  
 }
