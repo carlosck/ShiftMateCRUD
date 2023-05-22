@@ -14,7 +14,7 @@ export default async function handler(request:NextApiRequest, response: NextApiR
         const db= await getFirebaseAdmin();
         try {
             const ProjectData = await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).get()            
-            returnInfo.setData((JSON.stringify(ProjectData.data())))
+            returnInfo.setData(ProjectData.data())
         } catch (error) {
             returnInfo.setError("server error:"+error);
         }        
