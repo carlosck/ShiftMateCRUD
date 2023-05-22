@@ -10,8 +10,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
     if(request.method==="POST")
     {
         try{
-            const db= await getFirebaseAdmin();
-            const userData = await db.collection('shifts').doc(request.body.mail).get()
+            const db= await getFirebaseAdmin();            
             const userProjects = await db.collection('shifts').doc(request.body.mail).collection('projects').get()
                         
             returnInfo.setData(userProjects.docs.map(doc=>doc.data()))
@@ -22,5 +21,4 @@ export default async function handler(request: NextApiRequest, response: NextApi
     }
     return response.status(200).json(returnInfo.show())
     
-    // return response.end()
 }
