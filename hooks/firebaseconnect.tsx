@@ -1,10 +1,7 @@
 import * as admin from 'firebase-admin'
 
-
-
-export default function getFirebaseAdmin(){
-    const db = admin.firestore();
-
+export default async function getFirebaseAdmin(){
+    
     if(!admin.apps.length){
         admin.initializeApp({
             credential:admin.credential.cert({
@@ -15,6 +12,7 @@ export default function getFirebaseAdmin(){
             }
         )
     }
+    const db = admin.firestore();
     
 return db;
 }

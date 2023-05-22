@@ -1,16 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import * as admin from 'firebase-admin' 
-
-if(!admin.apps.length){
-    admin.initializeApp({
-        credential: admin.credential.cert({
-          projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-          privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
-        })
-    });
-}
-const db= admin.firestore()
+import getFirebaseAdmin from "../../hooks/firebaseconnect";
+import ReturnInfo from '../../helpers/returnInfo'
 
 /* {
     "mail":"correo2@postmano.com",
@@ -18,12 +8,17 @@ const db= admin.firestore()
 } */
 
 export default async function handler(request:NextApiRequest, response: NextApiResponse){
-    if(request.method==="POST"){
-        const ProjectData = await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).get()
+    const returnInfo = new ReturnInfo()
 
-        console.log('Project data',ProjectData);
-        return response.end(JSON.stringify(ProjectData.data()))
+    if(request.method==="POST"){
+        const db= await getFirebaseAdmin();
+        try {
+            const ProjectData = await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).get()            
+            returnInfo.setData((JSON.stringify(ProjectData.data())))
+        } catch (error) {
+            returnInfo.setError("server error:"+error);
+        }        
     }
     
-    return response.end('POST expected')
+    return response.status(200).json(returnInfo.show())
 }
