@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import getFirebaseAdmin from "../../hooks/firebaseconnect";
 import ReturnInfo from '../../helpers/returnInfo'
+require('firebase-admin')
 
 /* {
     "mail":"correo2@postmano.com",
@@ -11,6 +12,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
     const returnInfo = new ReturnInfo()
     
     if(request.method==="POST"){
+        
         try {
             const db = await getFirebaseAdmin()
             const project = await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).get()
@@ -19,7 +21,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
             
             const newShift=  current+1<actors.length ? current+1 : 0
             
-            db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).update({current: newShift})
+            db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).update({current: newShift, last_change: new Date()})
             
             returnInfo.setData({newActor: actors[newShift], newShift: newShift })
 
