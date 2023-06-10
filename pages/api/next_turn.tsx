@@ -21,7 +21,7 @@ export default async function handler(request: NextApiRequest, response: NextApi
             
             db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.project).update({current: newShift})
             
-            returnInfo.setData({newShift: actors[newShift] })
+            returnInfo.setData({newActor: actors[newShift], newShift: newShift })
 
         } catch (error) {
             returnInfo.setError("server error:"+error);
