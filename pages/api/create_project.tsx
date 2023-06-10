@@ -18,13 +18,15 @@ export default async function handler(
 
     if(request.method === 'POST'){
         const db= await getFirebaseAdmin();
-                
+        const new_date = new Date()
+        
         try{
             await db.collection('shifts').doc(request.body.mail).collection('projects').doc(request.body.name).set({
                     
                 name: request.body.name,
                 actors: request.body.actors,
-                current: 0
+                current: 0,
+                last_change: new_date.getTime(),
                 
             })
             
