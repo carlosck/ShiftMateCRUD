@@ -12,8 +12,8 @@ export default async function handler(request: NextApiRequest, response: NextApi
         try{
             const db= await getFirebaseAdmin();            
             const userProjects = await db.collection('shifts').doc(request.body.mail).collection('projects').get()
-                        
-            returnInfo.setData(userProjects.docs.map(doc=>doc.data()))
+                
+            returnInfo.setData(userProjects.docs.map(doc=>{return {...doc.data(),...{id: doc.id}}}))
         }
         catch(error){
             return response.end('error',error)
